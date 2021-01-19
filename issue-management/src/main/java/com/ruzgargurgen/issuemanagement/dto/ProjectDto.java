@@ -1,9 +1,12 @@
 package com.ruzgargurgen.issuemanagement.dto;
 
+
 public class ProjectDto {
 	
 	private Long id;
+    
 	private String projectName;
+	
 	private String projectCode;
 	
 	public ProjectDto() {

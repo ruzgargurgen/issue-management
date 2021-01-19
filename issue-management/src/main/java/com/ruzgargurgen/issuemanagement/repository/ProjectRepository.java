@@ -12,9 +12,11 @@ import net.bytebuddy.asm.Advice.OffsetMapping.Sort;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 	
-	List<Project> findByProjectCode(String projectCode);
-	
+	Project getByProjectCodeAndIdNot(String projectCode,Long id);
+	Project findByProjectCode(String projectCode);
 	List<Project> findByProjectCodeContains(String projectCode);
+	//Page<Project> findAll(Pageable pageable);
+	//List<Project> findAll(Sort sort);
 
 
 }

@@ -14,6 +14,7 @@ import com.ruzgargurgen.issuemanagement.model.Issue;
 import com.ruzgargurgen.issuemanagement.repository.IssueRepository;
 import com.ruzgargurgen.issuemanagement.service.IssueService;
 import com.ruzgargurgen.issuemanagement.util.TPage;
+import com.sun.el.stream.Optional;
 
 @Service
 public class IssueServiceImpl implements IssueService {
@@ -32,15 +33,16 @@ public class IssueServiceImpl implements IssueService {
 		if (issue.getDate()==null) {
 			throw new IllegalArgumentException("Issue Date cannot null");
 		}
-		Issue issueDb=modelMapper.map(issue, Issue.class);
-		issueDb=issueRepository.save(issueDb);
-		return modelMapper.map(issueDb,IssueDto.class);
+		Issue issueEntity=modelMapper.map(issue, Issue.class);
+		issueEntity=issueRepository.save(issueEntity);
+		issue.setId(issueEntity.getId());
+		return issue;
 	}
 
 	@Override
 	public IssueDto getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Issue issue=issueRepository.getOne(id);
+		return modelMapper.map(issue, IssueDto.class);
 	}
 
 	@Override
@@ -54,6 +56,15 @@ public class IssueServiceImpl implements IssueService {
 
 	@Override
 	public Boolean delete(IssueDto issue) {
+
+		issueRepository.deleteById(issue.getId());
+		return Boolean.TRUE;
+		
+	}
+
+	
+	@Override
+	public IssueDto update(Long id,IssueDto issue) {
 		// TODO Auto-generated method stub
 		return null;
 	}

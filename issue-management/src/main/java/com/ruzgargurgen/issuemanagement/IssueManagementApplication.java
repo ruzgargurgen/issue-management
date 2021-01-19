@@ -11,6 +11,7 @@ public class IssueManagementApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(IssueManagementApplication.class, args);
 	}
+	
 	@Bean
 	public ModelMapper getModelMapper() {
 		return new ModelMapper(); 
