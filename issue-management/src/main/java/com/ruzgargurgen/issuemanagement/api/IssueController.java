@@ -17,7 +17,7 @@ import com.ruzgargurgen.issuemanagement.service.Impl.IssueServiceImpl;
 
 
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/issue")
 public class IssueController {
 	
 	@Autowired

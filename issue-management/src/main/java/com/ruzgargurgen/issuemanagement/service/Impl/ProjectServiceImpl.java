@@ -24,7 +24,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public ProjectDto save(ProjectDto project) {
 		
-		//Project projectCheck=(Project) projectRepository.findByProjectCode(project.getProjectCode());
+		Project projectCheck=projectRepository.findByProjectCode(project.getProjectCode());
 		Project p=modelMapper.map(project, Project.class);
 		p=projectRepository.save(p);
 		project.setId(p.getId());
@@ -62,7 +62,7 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public ProjectDto update(long id, ProjectDto project) {
+	public ProjectDto update(Long id, ProjectDto project) {
 		
 		Project projectDb=projectRepository.getOne(id);
 		if (projectDb==null) {
@@ -80,6 +80,7 @@ public class ProjectServiceImpl implements ProjectService {
 		return modelMapper.map(projectDb, ProjectDto.class);
 		
 	}
+
 
 	
 	
