@@ -1,4 +1,4 @@
-package com.ruzgargurgen.issuemanagement.model;
+package com.ruzgargurgen.issuemanagement.enums;
 
 public enum IssueStatus {
 

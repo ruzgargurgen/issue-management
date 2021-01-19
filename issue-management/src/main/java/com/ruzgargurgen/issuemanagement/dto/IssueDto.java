@@ -2,7 +2,7 @@ package com.ruzgargurgen.issuemanagement.dto;
 
 import java.sql.Date;
 
-import com.ruzgargurgen.issuemanagement.model.IssueStatus;
+import com.ruzgargurgen.issuemanagement.enums.IssueStatus;
 
 public class IssueDto {
 	
@@ -13,6 +13,7 @@ public class IssueDto {
 	private IssueStatus issueStatus;
 	private UserDto assignee;
 	private ProjectDto project;
+	
 	public Long getId() {
 		return id;
 	}

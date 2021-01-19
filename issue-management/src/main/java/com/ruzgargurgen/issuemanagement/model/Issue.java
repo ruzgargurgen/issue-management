@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.ruzgargurgen.issuemanagement.enums.IssueStatus;
+
 @Entity
 @Table(name="issue")
 public class Issue extends BaseModel {
