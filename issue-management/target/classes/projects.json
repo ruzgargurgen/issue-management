@@ -1,0 +1,28 @@
+[
+{
+    "_class":"com.ruzgargurgen.issuemanagement.model.Project",
+	"projectName" : "Spring Boot Project",
+    "projectCode" : "M0000001"
+},
+{
+    "_class":"com.ruzgargurgen.issuemanagement.model.Project",
+	"projectName" : "Java Project",
+    "projectCode" : "M0000002"
+},
+{
+    "_class":"com.ruzgargurgen.issuemanagement.model.Project",
+	"projectName" : "Angular Project",
+    "projectCode" : "M0000003"
+},
+{
+    "_class":"com.ruzgargurgen.issuemanagement.model.Project",
+	"projectName" : "C# Project",
+    "projectCode" : "M0000004"
+},
+{
+    "_class":"com.ruzgargurgen.issuemanagement.model.Project",
+	"projectName" : "Python Project",
+    "projectCode" : "M0000005"
+}
+]
+

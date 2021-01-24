@@ -1,12 +1,18 @@
 package com.ruzgargurgen.issuemanagement.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value = "Project Data Transfer Object")
 public class ProjectDto {
 	
+	@ApiModelProperty(value = "Project ID")
 	private Long id;
     
+	@ApiModelProperty(required = true,value = "Name Of Project")
 	private String projectName;
 	
+	@ApiModelProperty(required = true,value = "Code Of Project")
 	private String projectCode;
 	
 	public ProjectDto() {

@@ -29,9 +29,9 @@ public class IssueServiceImpl implements IssueService {
 	}
 
 	@Override
-	public IssueDto save(IssueDto issue) {
+	public IssueDto create(IssueDto issue) {
 		if (issue.getDate()==null) {
-			throw new IllegalArgumentException("Issue Date cannot null");
+			throw new IllegalArgumentException("Issue Date cannot null!");
 		}
 		Issue issueEntity=modelMapper.map(issue, Issue.class);
 		issueEntity=issueRepository.save(issueEntity);

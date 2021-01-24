@@ -12,40 +12,39 @@ import com.ruzgargurgen.issuemanagement.dto.ProjectDto;
 import com.ruzgargurgen.issuemanagement.model.Project;
 import com.ruzgargurgen.issuemanagement.repository.ProjectRepository;
 import com.ruzgargurgen.issuemanagement.service.ProjectService;
+
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
 	@Autowired
 	private ProjectRepository projectRepository;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
 
 	@Override
 	public ProjectDto save(ProjectDto project) {
-		
-		Project projectCheck=projectRepository.findByProjectCode(project.getProjectCode());
-		Project p=modelMapper.map(project, Project.class);
-		p=projectRepository.save(p);
+
+		Project projectCheck = projectRepository.findByProjectCode(project.getProjectCode());
+		Project p = modelMapper.map(project, Project.class);
+		p = projectRepository.save(p);
 		project.setId(p.getId());
 		return project;
 	}
 
 	@Override
 	public ProjectDto getById(Long id) {
-		Project project=projectRepository.getOne(id);
+		Project project = projectRepository.getOne(id);
 		return modelMapper.map(project, ProjectDto.class);
 	}
 
 	@Override
 	public ProjectDto getByProjectCode(String projectCode) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Project> getByProjectCodeContains(String projectCode) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -55,34 +54,29 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Boolean delete(Long  id) {
-		
+	public Boolean delete(Long id) {
 		projectRepository.deleteById(id);
 		return Boolean.TRUE;
 	}
 
 	@Override
 	public ProjectDto update(Long id, ProjectDto project) {
-		
-		Project projectDb=projectRepository.getOne(id);
-		if (projectDb==null) {
-			throw new IllegalArgumentException("Project code does not exist"+id);
+
+		Project projectDb = projectRepository.getOne(id);
+		if (projectDb == null) {
+			throw new IllegalArgumentException("Project Code Does Not Exist!" + id);
 		}
-		
-		Project projectCheck=projectRepository.getByProjectCodeAndIdNot(project.getProjectCode(), id);
-		if (projectCheck==null && projectCheck.getId()!=projectDb.getId()) {
-			throw new IllegalArgumentException("project code Already exist");
+
+		Project projectCheck = projectRepository.findByProjectCodeAndIdNot(project.getProjectCode(), id);
+		if (projectCheck == null) {
+			throw new IllegalArgumentException("Project Code Already Exist");
 		}
-		
+
 		projectDb.setProjectCode(project.getProjectCode());
 		projectDb.setProjectName(project.getProjectName());
 		projectRepository.save(projectDb);
 		return modelMapper.map(projectDb, ProjectDto.class);
-		
+
 	}
 
-
-	
-	
-	
 }

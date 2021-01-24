@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ruzgargurgen.issuemanagement.dto.IssueDto;
 import com.ruzgargurgen.issuemanagement.service.Impl.IssueServiceImpl;
+import com.ruzgargurgen.issuemanagement.util.ApiPaths;
 
 
 @RestController
-@RequestMapping("/issue")
+@RequestMapping(ApiPaths.IssueCtrl.CTRL)
 public class IssueController {
 	
 	@Autowired
@@ -31,7 +32,7 @@ public class IssueController {
      
 	@PostMapping()
 	public ResponseEntity<IssueDto> createProject(@RequestBody IssueDto issue){
-		return ResponseEntity.ok(issueServiceImpl.save(issue));
+		return ResponseEntity.ok(issueServiceImpl.create(issue));
 	}
 	
 	@PutMapping("/{id}")

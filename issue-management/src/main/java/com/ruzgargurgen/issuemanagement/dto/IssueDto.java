@@ -3,7 +3,6 @@ package com.ruzgargurgen.issuemanagement.dto;
 import java.sql.Date;
 
 import com.ruzgargurgen.issuemanagement.enums.IssueStatus;
-
 public class IssueDto {
 	
 	private Long id;
