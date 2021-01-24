@@ -26,6 +26,8 @@ public class ProjectServiceImpl implements ProjectService {
 	public ProjectDto save(ProjectDto project) {
 
 		Project projectCheck = projectRepository.findByProjectCode(project.getProjectCode());
+		if (projectCheck != null)
+            throw new IllegalArgumentException("Project Code Already Exist");
 		Project p = modelMapper.map(project, Project.class);
 		p = projectRepository.save(p);
 		project.setId(p.getId());

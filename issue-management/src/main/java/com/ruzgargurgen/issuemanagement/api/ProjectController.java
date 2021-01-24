@@ -1,5 +1,7 @@
 package com.ruzgargurgen.issuemanagement.api;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,7 +36,7 @@ public class ProjectController {
      
 	@PostMapping()
 	@ApiOperation(value = "Create Operation",response = ProjectDto.class)
-	public ResponseEntity<ProjectDto> createProject(@RequestBody ProjectDto project){
+	public ResponseEntity<ProjectDto> createProject(@Valid @RequestBody ProjectDto project){
 		return ResponseEntity.ok(projectServiceImpl.save(project));
 	}
 	
