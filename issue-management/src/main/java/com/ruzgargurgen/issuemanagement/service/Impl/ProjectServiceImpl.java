@@ -1,5 +1,6 @@
 package com.ruzgargurgen.issuemanagement.service.Impl;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -41,21 +42,6 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public ProjectDto getByProjectCode(String projectCode) {
-		return null;
-	}
-
-	@Override
-	public List<Project> getByProjectCodeContains(String projectCode) {
-		return null;
-	}
-
-	@Override
-	public Page<Project> getAllPageable(Pageable pageable) {
-		return projectRepository.findAll(pageable);
-	}
-
-	@Override
 	public Boolean delete(Long id) {
 		projectRepository.deleteById(id);
 		return Boolean.TRUE;
@@ -80,5 +66,11 @@ public class ProjectServiceImpl implements ProjectService {
 		return modelMapper.map(projectDb, ProjectDto.class);
 
 	}
+
+	@Override
+	public List<ProjectDto> getAll() {
+        List<Project> data = projectRepository.findAll();
+        return Arrays.asList(modelMapper.map(data, ProjectDto[].class));
+    }
 
 }

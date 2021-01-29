@@ -13,10 +13,9 @@ public interface ProjectService {
 	
 	ProjectDto save(ProjectDto project);
 	ProjectDto getById(Long id);
-	ProjectDto getByProjectCode(String projectCode);
-	List<Project> getByProjectCodeContains(String projectCode);
-	Page<Project> getAllPageable(Pageable pageable);
     Boolean delete(Long id);
     ProjectDto update(Long id,ProjectDto project);
+    List<ProjectDto> getAll();
+     
 
 }

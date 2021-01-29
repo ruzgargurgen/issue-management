@@ -1,5 +1,7 @@
 package com.ruzgargurgen.issuemanagement.api;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ruzgargurgen.issuemanagement.dto.ProjectDto;
 import com.ruzgargurgen.issuemanagement.service.Impl.ProjectServiceImpl;
 import com.ruzgargurgen.issuemanagement.util.ApiPaths;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -26,6 +29,13 @@ public class ProjectController {
 	
 	@Autowired
 	private ProjectServiceImpl projectServiceImpl;
+	
+	@GetMapping()
+    @ApiOperation(value = "Get All Operation", response = ProjectDto.class , responseContainer = "List")
+    public ResponseEntity<List<ProjectDto>> getAll() {
+        List<ProjectDto> data = projectServiceImpl.getAll();
+        return ResponseEntity.ok(data);
+    }
 	
 	@GetMapping("/{id}")
 	@ApiOperation(value = "Get By Id Operation",response = ProjectDto.class)
